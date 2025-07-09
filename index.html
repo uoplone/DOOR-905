@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Welcome Page</title>
+  <style>
+    :root {
+      --main-gradient: linear-gradient(135deg, #4CAF50, #2E7D32);
+      --text-dark: #212121;
+      --text-light: #ffffff;
+      --transition-fast: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f4f6;
+      overflow-x: hidden;
+    }
+
+    .page {
+      display: none;
+      height: 100vh;
+      width: 100%;
+      padding: 0 10%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #f3f4f6;
+      z-index: 10;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .page.active {
+      display: flex;
+    }
+
+    .hero {
+      height: 100vh;
+      width: 100%;
+      padding: 0 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 4rem;
+      color: var(--text-dark);
+      animation: fadeDown 1s ease-in-out;
+    }
+
+    p {
+      font-size: 1.4rem;
+      color: #555;
+      margin: 20px 0 40px;
+      max-width: 600px;
+      animation: fadeUp 1.5s ease-in-out;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      animation: fadeUp 1.7s ease-in-out;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: white;
+      background-image: var(--main-gradient);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    #btn1 {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: white;
+      background-image: var(--main-gradient);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    #btn2 {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: white;
+      background-image: var(--main-gradient);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Background Circles */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      background: #4CAF50;
+      z-index: 0;
+    }
+
+    .circle.large {
+      width: 400px;
+      height: 400px;
+    }
+
+    .circle.medium {
+      width: 200px;
+      height: 200px;
+    }
+
+    .circle.small {
+      width: 80px;
+      height: 80px;
+    }
+
+    .circle1 { top: 10%; left: -150px; }
+    .circle2 { bottom: 20%; right: -100px; }
+    .circle3 { top: 50%; left: 60%; }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Decorations -->
+  <div class="circle circle1 large"></div>
+  <div class="circle circle2 medium"></div>
+  <div class="circle circle3 small"></div>
+
+  <!-- First Page: Welcome -->
+  <div class="hero" id="welcomePage">
+    <h1>Welcome to Our Site</h1>
+    <p>Delivering elegant design, responsive layout, and world-class UI to elevate your digital presence.</p>
+    <div class="buttons">
+      <button class="btn" onclick="showNextPage()">Get Started</button>
+      <button class="btn">Learn More</button>
+    </div>
+  </div>
+
+  <!-- Second Page: Hidden at first -->
+  <div class="page" id="nextPage">
+    <h1>Choose an Option</h1>
+    <div class="buttons" style="margin-top: 40px;">
+      <button id="btn1">Option A</button>
+      <button id="btn2">Option B</button>
+    </div>
+  </div>
+
+  <script>
+    function showNextPage() {
+      document.getElementById('welcomePage').style.display = 'none';
+      document.getElementById('nextPage').classList.add('active');
+    }
+  </script>
+  <script>
+      document.getElementById('btn1').addEventListener('click', function() {
+        // التوجيه إلى main.html عند الضغط على الزر
+        window.location.href = 'barcode.html'; 
+      });
+      document.getElementById('btn2').addEventListener('click', function() {
+        // التوجيه إلى main.html عند الضغط على الزر
+        window.location.href = 'qrcode.html'; 
+      });
+    </script>
+
+</body>
+</html>
